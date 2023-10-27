@@ -9,3 +9,9 @@ variable "deployment_id" {
   type        = string
   default     = ""
 }
+
+variable "region" {
+  description = "AWS region"
+  type        = string
+  default     = "ap-southeast-2"
+}
