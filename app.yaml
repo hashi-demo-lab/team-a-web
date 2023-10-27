@@ -1,0 +1,16 @@
+schemaVersion: "2.2"
+description: "Install and configure Vault Agent"
+mainSteps:
+  - action: "aws:runShellScript"
+    name: "install_vault_agent"
+    inputs:
+      timeoutSeconds: '300'
+      runCommand:
+      - sudo apt update
+      - sudo chown -R ubuntu:ubuntu /var/www/html
+      - sudo chmod +x *.sh
+      - cd /var/www/html
+      - sudo rm index.html
+      - sudo git clone https://github.com/CloudbrokerAz/theFutureHasLanded.git .
+      - sudo rm -rf .git
+      - sed -i "s|<h2>The future has landed|<h2>${description} The future has landed|" index.html
