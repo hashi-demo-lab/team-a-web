@@ -15,10 +15,6 @@ terraform {
   }
 }
 
-provider "aws" {
-  region = var.region
-}
-
 provider "vault" {
   address = var.vault_address
 }
