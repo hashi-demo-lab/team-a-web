@@ -3,24 +3,24 @@ data "tfe_outputs" "foo" {
   workspace    = "team-a-ec2"
 }
 
-data "vault_kv_secret_v2" "role" {
+data "vault_kv_secret_v2" "secret_role" {
   mount = "demo-key-value"
   name  = "aarons-secrets"
 }
 
 locals {
-  vault_data = data.vault_kv_secret_v2.role
+  vault_data = data.vault_kv_secret_v2.secret_role
 }
 
-resource "aws_ssm_document" "run-script-document" {
+resource "aws_ssm_document" "web-script-document" {
   name            = "vault_script_document_${var.deployment_id}"
   document_type   = "Command"
   document_format = "YAML"
-  content         = templatefile("${path.root}/app.yaml", { description = data.vault_kv_secret_v2.role.data["role"] })
+  content         = templatefile("${path.root}/app.yaml", { description = data.vault_kv_secret_v2.secret_role.data["role"] })
 }
 
-resource "aws_ssm_association" "app-install" {
-  name = aws_ssm_document.run-script-document.name
+resource "aws_ssm_association" "webpage-setup" {
+  name = aws_ssm_document.web-script-document.name
 
   targets {
     key    = "InstanceIds"
