@@ -1,14 +1,4 @@
 terraform {
-  cloud {
-    hostname     = "app.terraform.io"
-    organization = "hashi-demos-apj"
-
-    workspaces {
-      project = "Team A"
-      name = "team-a-web"
-    }
-  }
-
   required_providers {
     aws = {
       source  = "hashicorp/aws"
