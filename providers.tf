@@ -5,7 +5,7 @@ terraform {
 
     workspaces {
       project = "Team A"
-      name = "team-a-app"
+      name = "team-a-web"
     }
   }
 

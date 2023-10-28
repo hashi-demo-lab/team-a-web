@@ -1,16 +1,17 @@
 schemaVersion: "2.2"
-description: "Install and configure Vault Agent"
+description: "Setup website"
 mainSteps:
   - action: "aws:runShellScript"
-    name: "install_vault_agent"
+    name: "setup_website"  # <- Changed this to a valid name
     inputs:
       timeoutSeconds: '300'
       runCommand:
       - sudo apt update
       - sudo chown -R ubuntu:ubuntu /var/www/html
       - sudo chmod +x *.sh
-      - cd /var/www/html
-      - sudo rm index.html
-      - sudo git clone https://github.com/CloudbrokerAz/theFutureHasLanded.git .
-      - sudo rm -rf .git
-      - sed -i "s|<h2>The future has landed|<h2>${description} The future has landed|" index.html
+      - git clone https://github.com/CloudbrokerAz/theFutureHasLanded.git /tmp/website
+      - sudo rm -rf /var/www/html/*
+      - sudo cp -r /tmp/website/* /var/www/html/
+      - sudo rm -rf /tmp/website
+      - sudo rm -rf /var/www/html/.git
+      - sed -i "s|<h2>The future has landed|<h2>${description} The future has landed|" /var/www/html/index.html
