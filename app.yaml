@@ -15,3 +15,4 @@ mainSteps:
       - sudo rm -rf /tmp/website
       - sudo rm -rf /var/www/html/.git
       - sed -i "s|<h2>The future has landed|<h2>${description} The future has landed|" /var/www/html/index.html
+      
