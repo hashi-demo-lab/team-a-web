@@ -1,6 +1,6 @@
 data "tfe_outputs" "foo" {
   organization = "hashi-demos-apj"
-  workspace    = "team-a-lz"
+  workspace    = "team-a-ec2"
 }
 
 data "vault_kv_secret_v2" "secret_role" {
