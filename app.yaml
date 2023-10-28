@@ -9,7 +9,7 @@ mainSteps:
       - sudo apt update
       - sudo chown -R ubuntu:ubuntu /var/www/html
       - sudo chmod +x *.sh
-      - git clone https://github.com/CloudbrokerAz/theFutureHasLanded.git /tmp/website
+      - git clone https://github.com/CloudbrokerAz/lens.git /tmp/website
       - sudo rm -rf /var/www/html/*
       - sudo cp -r /tmp/website/* /var/www/html/
       - sudo rm -rf /tmp/website
